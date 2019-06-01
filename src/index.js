@@ -1,7 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import gameReducers from "./reducers.js";
+import Game from "./components/Game.js";
 import "./index.css";
 
-import Game from "./components/Game.js";
+const store = createStore(gameReducers);
 
-ReactDOM.render(<Game />, document.getElementById("root"));
+render(
+	<Provider store={store}>
+		<Game />
+	</Provider>,
+	document.getElementById("root")
+);
